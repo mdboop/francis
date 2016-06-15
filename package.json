@@ -4,6 +4,7 @@
   "description": "A tool for bringing the scientific method to everyday decisions",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,10 @@
   },
   "homepage": "https://github.com/mdboop/francis#readme",
   "dependencies": {
+    "app-boot": "^1.0.3",
+    "body-parser": "^1.15.1",
+    "dotenv": "^1.2.0",
+    "express": "^4.13.2",
     "react": "^15.1.0",
     "react-router": "^2.4.1",
     "react-router-redux": "^4.0.5",
@@ -27,8 +32,10 @@
     "babel-eslint": "^4.1.3",
     "babel-loader": "^6.0.1",
     "babel-preset-es2015": "^6.0.15",
+    "babel-preset-es2015-loose": "^7.0.0",
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.0.15",
+    "babel-register": "^6.9.0",
     "enzyme": "^2.3.0",
     "eslint": "^2.12.0",
     "eslint-config-airbnb": "^9.0.1",
