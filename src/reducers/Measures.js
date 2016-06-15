@@ -1,31 +1,30 @@
-var Immutable = require('immutable');
+import Immutable from 'immutable';
 const initialState = new Immutable.Map();
 
-module.exports = function(state = initialState, action) {
+export default function measures(state = initialState, action) {
   if (action.type === 'SET_MEASURES' && action.measures) {
     return Immutable.fromJS(action.measures);
   }
   if (action.type === 'CREATE_MEASURE') {
-    return state.set(action.measureId, Immutable.Map({
+    return state.set(action.measureId, new Immutable.Map({
       list: new Immutable.List(),
-      samples: new Immutable.List()
-      }));
-    }
-
+      samples: new Immutable.List(),
+    }));
+  }
   if (action.type === 'SET_KIND') {
     if (action.kind !== 'numeric') {
-      state = state.setIn([action.measureId, 'unit'], null);
+      return state.setIn([action.measureId, 'unit'], null);
     }
     if (action.kind === 'qualitative') {
-      state = state.setIn([action.measureId, 'list'], null);
+      return state.setIn([action.measureId, 'list'], null);
     }
     if (action.kind === 'list') {
-      state = state.setIn([action.measureId, 'list'], Immutable.List());
-      state = state.setIn([action.measureId, 'scale'], null);
+      state.setIn([action.measureId, 'list'], new Immutable.List());
+      state.setIn([action.measureId, 'scale'], null);
     }
     if (action.kind === 'numeric') {
-      state = state.setIn([action.measureId, 'scale'], null);
-      state = state.setIn([action.measureId, 'list'], null);
+      state.setIn([action.measureId, 'scale'], null);
+      state.setIn([action.measureId, 'list'], null);
     }
     return state.setIn([action.measureId, 'kind'], action.kind);
   }
@@ -46,16 +45,17 @@ module.exports = function(state = initialState, action) {
     return state.setIn([action.measureId, 'scaleDescriptionMax'], action.description);
   }
   if (action.type === 'ADD_SAMPLE') {
-    return state.updateIn([action.measureId, 'samples'], function(samples) {
-      return samples.push(action.sampleId);
-    });
+    return state.updateIn([action.measureId, 'samples'],
+      (samples) => samples.push(action.sampleId)
+    );
   }
   if (action.type === 'ADD_LIST_ITEM') {
-    action.item = action.item.trim();
-    if (action.item.length === 0) {
+    let item = action.item;
+    item = item.trim();
+    if (item.length === 0) {
       return state;
     }
-    var newList = state.getIn([action.measureId, 'list']);
+    let newList = state.getIn([action.measureId, 'list']);
     // Only add unique items
     if (newList.indexOf(action.item) === -1) {
       newList = newList.push(action.item);
@@ -63,9 +63,9 @@ module.exports = function(state = initialState, action) {
     return state.setIn([action.measureId, 'list'], newList);
   }
   if (action.type === 'REMOVE_LIST_ITEM') {
-    var newList = state.get(action.measureId).get('list');
+    let newList = state.get(action.measureId).get('list');
     // Find index of item
-    var itemIndex = newList.indexOf(action.item);
+    const itemIndex = newList.indexOf(action.item);
     // Remove if in list
     if (itemIndex >= 0) {
       newList = newList.splice(itemIndex, 1);
@@ -76,4 +76,4 @@ module.exports = function(state = initialState, action) {
     return state.setIn([action.measureId, 'name'], action.name);
   }
   return state;
-};
+}

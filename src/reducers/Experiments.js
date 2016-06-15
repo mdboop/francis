@@ -1,12 +1,12 @@
-var Immutable = require('immutable');
+const Immutable = require('immutable');
 const initialState = new Immutable.Map();
 
-module.exports = function(state = initialState, action) {
+export default function experiments(state = initialState, action) {
   if (action.type === 'SET_EXPERIMENTS') {
     return Immutable.fromJS(action.experiments);
   }
   if (action.type === 'CREATE_EXPERIMENT') {
-    return state.set(action.expId, Immutable.Map({
+    return state.set(action.expId, new Immutable.Map({
       _id: action.expId,
       active: true,
       depVars: new Immutable.List(),
@@ -35,15 +35,11 @@ module.exports = function(state = initialState, action) {
     return state.setIn([action.expId, 'name'], action.name);
   }
   if (action.type === 'ADD_DEP_VAR') {
-    return state.updateIn([action.expId, 'depVars'], function (list) {
-      return list.push(action.depVarId);
-    });
+    return state.updateIn([action.expId, 'depVars'], (list) => list.push(action.depVarId));
   }
   if (action.type === 'ADD_IND_VAR') {
-    return state.updateIn([action.expId, 'indVars'], function (list) {
-      return list.push(action.indVarId);
-    });
+    return state.updateIn([action.expId, 'indVars'], (list) => list.push(action.indVarId));
   }
   return state;
-};
+}
 

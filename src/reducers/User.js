@@ -1,7 +1,7 @@
-var Immutable = require('immutable');
+import Immutable from 'immutable';
 const initialState = new Immutable.Map({});
 
-module.exports = function(state = initialState, action) {
+export default function requests(state = initialState, action) {
   if (action.type === 'SET_USER') {
     return state.set('username', action.username).set('id', action.id);
   }
@@ -9,4 +9,4 @@ module.exports = function(state = initialState, action) {
     return new Immutable.Map({});
   }
   return state;
-};
+}

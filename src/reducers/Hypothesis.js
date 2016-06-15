@@ -1,11 +1,11 @@
-var Immutable = require('immutable');
-var initialState = Immutable.Map({
+import Immutable from 'immutable';
+const initialState = new Immutable.Map({
   hypothesis: '',
   cause: '',
-  effect: ''
+  effect: '',
 });
 
-module.exports = function(state = initialState, action) {
+export default function hypothesis(state = initialState, action) {
   if (action.type === 'SET_HYPOTHESIS') {
     return state.set('hypothesis', action.hypothesis);
   }
@@ -16,4 +16,4 @@ module.exports = function(state = initialState, action) {
     return state.set('effect', action.effect);
   }
   return state;
-};
+}

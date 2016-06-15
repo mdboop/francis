@@ -1,24 +1,28 @@
-var combineReducers = require('redux').combineReducers;
-var User = require('./User');
-var Experiments = require('./Experiments');
-var DepVars = require('./DepVars');
-var IndVars = require('./IndVars');
-var Measures = require('./Measures');
-var Samples = require('./Samples');
-var Reminders = require('./Reminders');
-var Requests = require('./Requests');
-var NewExperiment = require('./NewExperiment');
-var Router = require('redux-router').routerStateReducer;
+import dependentVariables from './dependentVariables';
+import editExperiment from './editExperiment';
+import experiments from './experiments';
+import hypothesis from './hypothesis';
+import independentVariables from './independentVariables';
+import measures from './measures';
+import newExperiment from './newExperiment';
+import samples from './samples';
+import user from './user';
 
-module.exports = combineReducers({
-  Router: Router,
-  User: User,
-  NewExperiment: NewExperiment,
-  Experiments : Experiments,
-  DepVars : DepVars,
-  IndVars : IndVars,
-  Measures : Measures,
-  Samples : Samples,
-  Reminders : Reminders,
-  Requests : Requests,
+import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
+
+// Add the reducer to your store on the `routing` key
+const rootReducer = combineReducers({
+  dependentVariables,
+  editExperiment,
+  experiments,
+  hypothesis,
+  independentVariables,
+  measures,
+  newExperiment,
+  samples,
+  user,
+  routing: routerReducer,
 });
+
+export default rootReducer;
