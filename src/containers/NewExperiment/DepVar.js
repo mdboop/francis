@@ -1,53 +1,61 @@
 // import React and Redux dependencies
-var React = require('react');
-var connect = require('react-redux').connect;
-var _ = require('underscore');
+import React from 'react';
+import { connect } from 'react-redux';
+import _ from 'lodash';
 
-var bindActionCreators = require('redux').bindActionCreators;
-var MeasureWrapper = require('./MeasureWrapper');
+import { bindActionCreators } from 'redux';
+import MeasureWrapper from './MeasureWrapper';
 
 // import actions
-var DepVarActions = require('../../actions/DepVars');
-var MeasureActions = require('../../actions/Measures');
-var NewExperimentActions = require('../../actions/NewExperiment');
-var Actions = _.extend(NewExperimentActions, MeasureActions, DepVarActions);
+import DepVarActions from '../../actions/DepVars';
+import MeasureActions from '../../actions/Measures';
+import NewExperimentActions from '../../actions/NewExperiment';
+const Actions = _.extend(NewExperimentActions, MeasureActions, DepVarActions);
 
-function mapStatetoProps (state, ownProps) {
+function mapStatetoProps(state, ownProps) {
   return {
-    measures: state.DepVars.getIn([ownProps.depVarId, 'measures']).toJS()
+    measures: state.DepVars.getIn([ownProps.dependentVariableId, 'measures']).toJS(),
   };
 }
 
-function mapDispatchtoProps (dispatch) {
+function mapDispatchtoProps(dispatch) {
   return {
-    actions: bindActionCreators(Actions, dispatch)
+    actions: bindActionCreators(Actions, dispatch),
   };
 }
 
-var DepVar = React.createClass({
+class DependentVariable extends React.Component {
+  componentWillMount() {
+    this.props.actions.setDepVarName(this.props.name, this.props.dependentVariableId);
+  }
 
-  componentWillMount: function () {
-    console.log(this.props.name);
-    this.props.actions.setDepVarName(this.props.name, this.props.depVarId);
-  },
-
-  setName: function () {
+  setName() {
     // this is all for supporting multiple depvars and measures
-    // this.props.actions.setDepVarName(this.refs.depVarName.value, this.props.depVarId);
-    // for now this just sets the measure name to the depvar name -- change once multi-measures per depvar
+    // this.props.actions.setDepVarName(this.refs.depVarName.value, this.props.dependentVariableId);
+    // for now this just sets the measure name to the DependentVariable name
+    //   -- change once multi-measures per DependentVariable
     // this.props.actions.setMeasureName(this.refs.depVarName.value, this.props.measures[0]);
-  },
+  }
 
-  render: function () {
+  render() {
     return (
       <div>
         <h3 className="subsection-title">Dependent Variable</h3>
-        <p className="guide">The dependent variable is the outcome you will measure, and it 
+        <p className="guide">The dependent variable is the outcome you will measure, and it
         may be as simple as your effect, but it needs to be related.</p>
-        <MeasureWrapper key={this.props.depVarId} depVarId={this.props.depVarId} />
+        <MeasureWrapper
+          key={this.props.dependentVariableId}
+          dependentVariableId={this.props.dependentVariableId}
+        />
       </div>
       );
   }
-});
+}
 
-module.exports = connect(mapStatetoProps, mapDispatchtoProps)(DepVar);
+DependentVariable.propTypes = {
+  actions: React.PropTypes.object,
+  name: React.PropTypes.string.isRequired,
+  dependentVariableId: React.PropTypes.number.isRequired,
+};
+
+export default connect(mapStatetoProps, mapDispatchtoProps)(DependentVariable);

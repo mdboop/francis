@@ -1,6 +1,4 @@
-module.exports.setReminders = function(reminders) {
-  return {
-    type: 'SET_REMINDERS',
-    reminders: reminders
-  };
-};
+export const setReminders = (reminders) => ({
+  type: 'SET_REMINDERS',
+  reminders,
+});

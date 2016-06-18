@@ -1,94 +1,69 @@
-module.exports.setMeasures = function(measures) {
-  return {
-    type: 'SET_MEASURES',
-    measures: measures
-  };
-};
+export const setMeasures = (measures) => ({
+  type: 'SET_MEASURES',
+  measures,
+});
 
-module.exports.createMeasure = function (measureId) {
-  return {
-    type: 'CREATE_MEASURE',
-    measureId: measureId
-  };
-};
+export const createMeasure = (measureId) => ({
+  type: 'CREATE_MEASURE',
+  measureId,
+});
 
-module.exports.setKind = function (kind, measureId) {
-  return {
-    type: 'SET_KIND',
-    kind: kind,
-    measureId: measureId
-  };
-};
+export const setKind = (kind, measureId) => ({
+  type: 'SET_KIND',
+  kind,
+  measureId,
+});
 
-module.exports.setUnit = function (unit, measureId) {
-  return {
-    type: 'SET_UNIT',
-    unit: unit,
-    measureId: measureId
-  };
-};
+export const setUnit = (unit, measureId) => ({
+  type: 'SET_UNIT',
+  unit,
+  measureId,
+});
 
+export const setScale = (scale, measureId) => ({
+  type: 'SET_SCALE',
+  scale,
+  measureId,
+});
 
-module.exports.setScale = function (scale, measureId) {
-  return {
-    type: 'SET_SCALE',
-    scale: scale,
-    measureId: measureId
-  };
-};
+export const setScaleDescriptionMin = (description, measureId) => ({
+  type: 'SET_SCALE_DESCRIPTION_MIN',
+  description,
+  measureId,
+});
 
-module.exports.setScaleDescriptionMin = function (description, measureId) {
-  return {
-    type: 'SET_SCALE_DESCRIPTION_MIN',
-    description: description,
-    measureId: measureId
-  };
-};
+export const setScaleDescriptionMiddle = (description, measureId) => ({
+  type: 'SET_SCALE_DESCRIPTION_MIDDLE',
+  description,
+  measureId,
+});
 
-module.exports.setScaleDescriptionMiddle = function (description, measureId) {
-  return {
-    type: 'SET_SCALE_DESCRIPTION_MIDDLE',
-    description: description,
-    measureId: measureId
-  };
-};
+export const setScaleDescriptionMax = (description, measureId) => ({
+  type: 'SET_SCALE_DESCRIPTION_MAX',
+  description,
+  measureId,
+});
 
-module.exports.setScaleDescriptionMax = function (description, measureId) {
-  return {
-    type: 'SET_SCALE_DESCRIPTION_MAX',
-    description: description,
-    measureId: measureId
-  };
-};
+export const addSample = (sampleId, measureId) => ({
+  type: 'ADD_SAMPLE',
+  sampleId,
+  measureId,
+});
 
-module.exports.addSample = function (sampleId, measureId) {
-  return {
-    type: 'ADD_SAMPLE',
-    sampleId: sampleId,
-    measureId: measureId
-  };
-};
+export const addListItem = (item, measureId) => ({
+  type: 'ADD_LIST_ITEM',
+  item,
+  measureId,
+});
 
-module.exports.addListItem = function (item, measureId) {
-  return {
-    type: 'ADD_LIST_ITEM',
-    item: item,
-    measureId: measureId
-  };
-};
+export const removeListItem = (item, measureId) => ({
+  type: 'REMOVE_LIST_ITEM',
+  item,
+  measureId,
+});
 
-module.exports.removeListItem = function (item, measureId) {
-  return {
-    type: 'REMOVE_LIST_ITEM',
-    item: item,
-    measureId: measureId
-  };
-};
-
-module.exports.setMeasureName = function (name, measureId) {
-  return {
-    type: 'SET_MEASURE_NAME',
-    name: name,
-    measureId: measureId
-  };
-};
+export const setMeasureName = (name, measureId) => ({
+  type: 'SET_MEASURE_NAME',
+  name,
+  measureId,
+});

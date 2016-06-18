@@ -1,24 +1,16 @@
-module.exports.goToPrevQuestion = function () {
-  return {
-    type: 'GO_TO_PREV_QUESTION'
-  };
-};
+export const goToPrevQuestion = () => ({
+  type: 'GO_TO_PREV_QUESTION',
+});
 
-module.exports.goToNextQuestion = function () {
-  return {
-    type: 'GO_TO_NEXT_QUESTION'
-  };
-};
+export const goToNextQuestion = () => ({
+  type: 'GO_TO_NEXT_QUESTION',
+});
 
-module.exports.resetQuestionIndex = function () {
-  return {
-    type: 'RESET_QUESTION_INDEX'
-  };
-};
+export const resetQuestionIndex = () => ({
+  type: 'RESET_QUESTION_INDEX',
+});
 
-module.exports.setValidity = function (valid) {
-  return {
-    type: 'SET_VALIDITY',
-    valid: valid
-  }
-};
+export const setValidity = (valid) => ({
+  type: 'SET_VALIDITY',
+  valid,
+});

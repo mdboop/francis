@@ -1,30 +1,21 @@
-module.exports.setSamples = function(samples) {
-  return {
-    type: 'SET_SAMPLES',
-    samples: samples
-  };
-};
+export const setSamples = (samples) => ({
+  type: 'SET_SAMPLES',
+  samples,
+});
 
-module.exports.setIndVarOptionOnSample = function(sampleId, indVarId, optionValue) {
-  return {
-    type: 'SET_IND_VAR_OPTION_ON_SAMPLE',
-    sampleId: sampleId,
-    indVarId: indVarId,
-    optionValue: optionValue
-  };
-};
+export const setIndVarOptionOnSample = (sampleId, indVarId, optionValue) => ({
+  type: 'SET_IND_VAR_OPTION_ON_SAMPLE',
+  sampleId,
+  indVarId,
+  optionValue,
+});
 
-module.exports.insertSample = function(sample) {
-  return {
-    type: 'INSERT_SAMPLE',
-    sample: sample
-  };
-};
+export const insertSample = (sample) => ({
+  type: 'INSERT_SAMPLE',
+  sample,
+});
 
-module.exports.createSample = function(sampleId) {
-  return {
-    type: 'CREATE_SAMPLE',
-    sampleId: sampleId
-  };
-};
-
+export const createSample = (sampleId) => ({
+  type: 'CREATE_SAMPLE',
+  sampleId,
+});

@@ -1,20 +1,14 @@
-module.exports.setHypothesis = function (hypothesis) {
-  return {
-    type: 'SET_HYPOTHESIS',
-    hypothesis: hypothesis
-  };
-};
+export const setHypothesis = (hypothesis) => ({
+  type: 'SET_HYPOTHESIS',
+  hypothesis,
+});
 
-module.exports.setCause = function (cause) {
-  return {
-    type: 'SET_CAUSE',
-    cause: cause
-  };
-};
+export const setCause = (cause) => ({
+  type: 'SET_CAUSE',
+  cause,
+});
 
-module.exports.setEffect = function (effect) {
-  return {
-    type: 'SET_EFFECT',
-    effect: effect
-  };
-};
+export const setEffect = (effect) => ({
+  type: 'SET_EFFECT',
+  effect,
+});

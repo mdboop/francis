@@ -1,84 +1,62 @@
-module.exports.setExperiments = function(exps) {
-  return {
-    type: 'SET_EXPERIMENTS',
-    experiments: exps
-  };
-};
+export const setExperiments = (exps) => ({
+  type: 'SET_EXPERIMENTS',
+  experiments: exps,
+});
 
-module.exports.createExperiment = function (expId) {
-  return {
-    type: 'CREATE_EXPERIMENT',
-    expId: expId
-  };
-};
+export const createExperiment = (expId) => ({
+  type: 'CREATE_EXPERIMENT',
+  expId,
+});
 
-module.exports.deleteExperiment = function (expId) {
-  return {
-    type: 'DELETE_EXPERIMENT',
-    expId: expId
-  };
-};
+export const deleteExperiment = (expId) => ({
+  type: 'DELETE_EXPERIMENT',
+  expId,
+});
 
-module.exports.setExperimentKind = function (kind, expId) {
-  return {
-    type: 'SET_EXPERIMENT_KIND',
-    kind: kind,
-    expId: expId
-  };
-};
+export const setExperimentKind = (kind, expId) => ({
+  type: 'SET_EXPERIMENT_KIND',
+  kind,
+  expId,
+});
 
-module.exports.setName = function (name, expId) {
-  return {
-    type: 'SET_NAME',
-    name: name,
-    expId: expId
-  };
-};
+export const setName = (name, expId) => ({
+  type: 'SET_NAME',
+  name,
+  expId,
+});
 
-module.exports.setActive = function (active, expId) {
-  return {
-    type: 'SET_ACTIVE',
-    active: active,
-    expId: expId
-  };
-};
+export const setActive = (active, expId) => ({
+  type: 'SET_ACTIVE',
+  active,
+  expId,
+});
 
-module.exports.setHypothesis = function (hypothesis, expId) {
-  return {
-    type: 'SET_HYPOTHESIS',
-    hypothesis: hypothesis,
-    expId: expId
-  };
-};
+export const setHypothesis = (hypothesis, expId) => ({
+  type: 'SET_HYPOTHESIS',
+  hypothesis,
+  expId,
+});
 
-module.exports.setCause = function (cause, expId) {
-  return {
-    type: 'SET_CAUSE',
-    cause: cause,
-    expId: expId
-  };
-};
+export const setCause = (cause, expId) => ({
+  type: 'SET_CAUSE',
+  cause,
+  expId,
+});
 
-module.exports.setEffect = function (effect, expId) {
-  return {
-    type: 'SET_EFFECT',
-    effect: effect,
-    expId: expId
-  };
-};
+export const setEffect = (effect, expId) => ({
+  type: 'SET_EFFECT',
+  effect,
+  expId,
+});
 
-module.exports.addDepVar = function (depVarId, expId) {
-  return {
-    type: 'ADD_DEP_VAR',
-    depVarId: depVarId,
-    expId: expId
-  };
-};
+export const addDepVar = (depVarId, expId) => ({
+  type: 'ADD_DEP_VAR',
+  depVarId,
+  expId,
+});
 
-module.exports.addIndVar = function (indVarId, expId) {
-  return {
-    type: 'ADD_IND_VAR',
-    indVarId: indVarId,
-    expId: expId
-  };
-};
+export const addIndVar = (indVarId, expId) => ({
+  type: 'ADD_IND_VAR',
+  indVarId,
+  expId,
+});

@@ -1,16 +1,16 @@
 // import React and Redux dependencies
-var React = require('react');
-var connect = require('react-redux').connect;
-var _ = require('underscore');
+import React from 'react';
+import { connect } from 'react-redux';
+import _ from 'underscore';
 
-var bindActionCreators = require('redux').bindActionCreators;
-var MeasureWrapper = require('./MeasureWrapper');
+import { bindActionCreators } from 'redux';
+import MeasureWrapper from './MeasureWrapper';
 
 // import actions
-var DepVarActions = require('../../actions/depVars');
-var MeasureActions = require('../../actions/Measures');
-var NewExperimentActions = require('../../actions/NewExperiment');
-var Actions = _.extend(NewExperimentActions, MeasureActions, DepVarActions);
+import DepVarActions from '../../actions/DepVars';
+import MeasureActions from '../../actions/Measures';
+import NewExperimentActions from '../../actions/NewExperiment';
+const Actions = extend(NewExperimentActions, MeasureActions, DepVarActions);
 
 function mapStatetoProps (state, ownProps) {
   return {

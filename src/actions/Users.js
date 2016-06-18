@@ -1,13 +1,9 @@
-module.exports.setUser = function(username, id) {
-  return {
-    type: 'SET_USER',
-    username: username,
-    id: id
-  };
-};
+export const setUser = (username, id) => ({
+  type: 'SET_USER',
+  username,
+  id,
+});
 
-module.exports.logout = function() {
-  return {
-    type: 'LOG_OUT_USER'
-  };
-};
+export const logout = () => ({
+  type: 'LOG_OUT_USER',
+});
